@@ -17,7 +17,7 @@ public class SinhVien_Modify {
         try{
             Statement statement = conn.createStatement();
             
-            String sql = "SELECT masv FROM SINHVIEN.QUAN_LY_SINH_VIEN";
+            String sql = "SELECT masv FROM quan_ly_sinh_vien";
             ResultSet result = statement.executeQuery(sql);
             
             while(result.next()){
@@ -37,7 +37,7 @@ public class SinhVien_Modify {
         try{
             Statement statement = conn.createStatement();
             
-            String sql = "SELECT masv FROM SINHVIEN.QUAN_LY_SINH_VIEN WHERE " + masv_ + " IN (SELECT masv FROM SINHVIEN.QUAN_LY_SINH_VIEN)";
+            String sql = "SELECT masv FROM quan_ly_sinh_vien WHERE " + masv_ + " IN (SELECT masv FROM quan_ly_sinh_vien)";
             ResultSet result = statement.executeQuery(sql);
             
             while(result.next()){
@@ -55,7 +55,7 @@ public class SinhVien_Modify {
         try{
             Statement statement = conn.createStatement();
             
-            String sql = "SELECT * FROM SINHVIEN.QUAN_LY_SINH_VIEN";
+            String sql = "SELECT * FROM quan_ly_sinh_vien";
             ResultSet result = statement.executeQuery(sql);
             
             while(result.next()){
@@ -77,7 +77,7 @@ public class SinhVien_Modify {
     
     public static void insert_sv(SinhVien sinhvien){
         try{
-            String sql = "INSERT INTO SINHVIEN.QUAN_LY_SINH_VIEN (masv , hoten , gioitinh , khoa , quequan) VALUES (? , ? , ? , ? , ?)";
+            String sql = "INSERT INTO quan_ly_sinh_vien (masv , hoten , gioitinh , khoa , quequan) VALUES (? , ? , ? , ? , ?)";
             
             PreparedStatement preStatement = conn.prepareStatement(sql);
             
@@ -95,7 +95,7 @@ public class SinhVien_Modify {
     
     public static void update_sv(SinhVien sinhvien){
         try{
-            String sql_ = "SELECT * FROM SINHVIEN.QUAN_LY_SINH_VIEN WHERE masv = " + sinhvien.getMasv();
+            String sql_ = "SELECT * FROM quan_ly_sinh_vien WHERE masv = " + sinhvien.getMasv();
             
             Statement statement = conn.createStatement();
             
@@ -114,7 +114,7 @@ public class SinhVien_Modify {
             
             if(masv_ != sinhvien.getMasv()){
                 try{
-                    String sql = "UPDATE SINHVIEN.QUAN_LY_SINH_VIEN SET masv = ?";
+                    String sql = "UPDATE quan_ly_sinh_vien SET masv = ?";
                     PreparedStatement preStatement = conn.prepareStatement(sql);
                     preStatement.setInt(1, masv_);
                     preStatement.executeUpdate();
@@ -125,7 +125,7 @@ public class SinhVien_Modify {
             
             if(hoten_.equals(sinhvien.getHoten()) == false){
                 try{
-                    String sql = "UPDATE SINHVIEN.QUAN_LY_SINH_VIEN SET hoten = ? WHERE masv = ?";
+                    String sql = "UPDATE quan_ly_sinh_vien SET hoten = ? WHERE masv = ?";
                     PreparedStatement preStatement = conn.prepareStatement(sql);
                     preStatement.setString(1, sinhvien.getHoten());
                     preStatement.setInt(2, sinhvien.getMasv());
@@ -137,7 +137,7 @@ public class SinhVien_Modify {
             
             if(gioitinh_.equals(sinhvien.getGioitinh()) == false){
                 try{
-                    String sql = "UPDATE SINHVIEN.QUAN_LY_SINH_VIEN SET gioitinh = ? WHERE masv = ?";
+                    String sql = "UPDATE quan_ly_sinh_vien SET gioitinh = ? WHERE masv = ?";
                     PreparedStatement preStatement = conn.prepareStatement(sql);
                     preStatement.setString(1, sinhvien.getGioitinh());
                     preStatement.setInt(2, sinhvien.getMasv());
@@ -149,7 +149,7 @@ public class SinhVien_Modify {
             
             if(khoa_.equals(sinhvien.getKhoa()) == false){
                 try{
-                    String sql = "UPDATE SINHVIEN.QUAN_LY_SINH_VIEN SET khoa = ? WHERE masv = ?";
+                    String sql = "UPDATE quan_ly_sinh_vien SET khoa = ? WHERE masv = ?";
                     PreparedStatement preStatement = conn.prepareStatement(sql);
                     preStatement.setString(1, sinhvien.getKhoa());
                     preStatement.setInt(2, sinhvien.getMasv());
@@ -161,7 +161,7 @@ public class SinhVien_Modify {
             
             if(quequan_.equals(sinhvien.getQuequan()) == false){
                 try{
-                    String sql = "UPDATE SINHVIEN.QUAN_LY_SINH_VIEN SET quequan = ? WHERE masv = ?";
+                    String sql = "UPDATE quan_ly_sinh_vien SET quequan = ? WHERE masv = ?";
                     PreparedStatement preStatement = conn.prepareStatement(sql);
                     preStatement.setString(1, sinhvien.getQuequan());
                     preStatement.setInt(2, sinhvien.getMasv());
@@ -177,7 +177,7 @@ public class SinhVien_Modify {
     
     public static void delete_sv(int Masv){
         try{
-            String sql = "DELETE FROM SINHVIEN.QUAN_LY_SINH_VIEN WHERE masv = ?";
+            String sql = "DELETE FROM quan_ly_sinh_vien WHERE masv = ?";
             
             PreparedStatement preStatement = conn.prepareStatement(sql);
             
@@ -193,7 +193,7 @@ public class SinhVien_Modify {
         ArrayList<SinhVien> sv_list = new ArrayList<SinhVien>();
         try{
             if(sv.getMasv() != -999){
-                String sql_masv = "SELECT * FROM SINHVIEN.QUAN_LY_SINH_VIEN WHERE masv = " + sv.getMasv();
+                String sql_masv = "SELECT * FROM quan_ly_sinh_vien WHERE masv = " + sv.getMasv();
                 
                 Statement statement = conn.createStatement();
                 ResultSet result = statement.executeQuery(sql_masv);
@@ -209,7 +209,7 @@ public class SinhVien_Modify {
                     sv_list.add(sv_);
                 }
             }else if(sv.getHoten() != null){
-                String sql_hoten = "SELECT * FROM SINHVIEN.QUAN_LY_SINH_VIEN WHERE hoten LIKE '%" + sv.getHoten() + "%'";
+                String sql_hoten = "SELECT * FROM quan_ly_sinh_vien WHERE hoten LIKE '%" + sv.getHoten() + "%'";
                 
                 Statement statement = conn.createStatement();
                 ResultSet result = statement.executeQuery(sql_hoten);
@@ -234,7 +234,7 @@ public class SinhVien_Modify {
     public static SinhVien get_Info_SV_by_masv(int manv_){
         SinhVien sv = new SinhVien();
         try{
-            String sql = "SELECT * FROM SINHVIEN.QUAN_LY_SINH_VIEN WHERE masv = " + manv_;
+            String sql = "SELECT * FROM quan_ly_sinh_vien WHERE masv = " + manv_;
             
             Statement st = conn.createStatement();
             
