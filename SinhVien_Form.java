@@ -321,8 +321,8 @@ public class SinhVien_Form extends JFrame {
     private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
         if (txtMasv.getText().isEmpty() == true) {
             String input = JOptionPane.showInputDialog(this, "Nhap Ma Sinh Vien Can Xoa : ");
-            if(input.charAt(0) >= '0' && input.charAt(0) <= '9'){
-                if (input != null && input.length() > 0) {
+            if (input != null && input.length() > 0) {
+                if(input.charAt(0) >= '0' && input.charAt(0) <= '9'){
                     int masv_input = Integer.parseInt(input);
                     int masv_querry = SinhVien_Modify.querry_one_masv(masv_input);
                     if (masv_querry != -999) {
@@ -338,8 +338,9 @@ public class SinhVien_Form extends JFrame {
                         JOptionPane.showMessageDialog(this, "Ma Sinh Vien Nhap Chua Dung , Vui Long Nhap Lai!");
                     }
                 }
-            }else{
-                JOptionPane.showMessageDialog(this, "Ma Sinh Vien Phai La So Nguyen , Vui Long Nhap Lai!");
+                else{
+                    JOptionPane.showMessageDialog(this, "Ma Sinh Vien Phai La So Nguyen , Vui Long Nhap Lai!");
+                }
             }
         } else {
             int masv_ = Integer.parseInt(txtMasv.getText());
