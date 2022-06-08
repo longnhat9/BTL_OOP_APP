@@ -1,3 +1,5 @@
+package btl_oop;
+
 public class SinhVien {
     private int Masv;
     private String Hoten;
